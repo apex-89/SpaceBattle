@@ -9,87 +9,89 @@
     <title>Space Battle</title>
 </head>
 <body>
+    <div id="container">
+        
+        <div id="header">
+            <h1 class="animate__animated animate__backInDown">SPACE WARS</h1>
+            <button class="button">
+                <span class="button_lg">
+                    <span class="button_sl"></span>
+                    <span class="button_text">Start Battle</span>
+                </span>
+            </button>
+        </div>
+        <!-- wrap both into css grid -->
+        <div id="my-ship">
+            <img class="animate__animated animate__fadeInLeft" src="./images/USS_Ship.png" alt="earth ship">
+            <div class="animate__animated animate__fadeIn" class="ship-data">
+                <h1>USS HelloWorld</h1>
+                <h3 id="my-ship-hull">HULL: 20</h3>
+                <h3>FIREPOWER: 5</h3>
+                <h3>ACCURACY: .7</h3>
+            </div>
+        </div>
+        
+        <div id="enemy">
+            <div class="ship" id="borg0">
+                <img class="animate__animated animate__fadeInRight" id="img-0" src="./images/enemy_ship.png" alt="enemy ship">
+                <div class="animate__animated animate__fadeIn" class="enemy-data" id="id-0">
+                    <h1>Borg</h1>
+                    <h3 class="hull">?</h3>
+                    <h3 class="firepower">?</h3>
+                    <h3 class="accuracy">?</h3>
+                </div>                
+            </div>
 
-    <!-- wrap both into css grid -->
-    <div id="my-ship">
-        <img src="./images/USS_Ship.png" alt="earth ship">
-        <div class="ship-data">
-            <h1>USS HelloWorld</h1>
-            <h3 id="my-ship-hull">20</h3>
-            <h3>5</h3>
-            <h3>.7</h3>
+            <div class="ship" id="borg1">
+                <img class="animate__animated animate__fadeInRight" id="img-1" src="./images/enemy_ship.png" alt="enemy ship">
+                <div class="animate__animated animate__fadeIn" class="enemy-data" id="id-1">
+                    <h1>Borg</h1>
+                    <h3 class="hull">?</h3>
+                    <h3 class="firepower">?</h3>
+                    <h3 class="accuracy">?</h3>
+                </div>
+            </div>
+
+            <div class="ship" id="borg2">
+                <img class="animate__animated animate__fadeInRight" id="img-2" src="./images/enemy_ship.png" alt="enemy ship">
+                <div class="animate__animated animate__fadeIn" class="enemy-data" id="id-2">
+                    <h1>Borg</h1>
+                    <h3 class="hull">?</h3>
+                    <h3 class="firepower">?</h3>
+                    <h3 class="accuracy">?</h3>
+                </div>
+            </div>
+            
+            <div class="ship" id="borg3">
+                <img class="animate__animated animate__fadeInRight" id="img-3" src="./images/enemy_ship.png" alt="enemy ship">
+                <div class="animate__animated animate__fadeIn" class="enemy-data" id="id-3">
+                    <h1>Borg</h1>
+                    <h3 class="hull">?</h3>
+                    <h3 class="firepower">?</h3>
+                    <h3 class="accuracy">?</h3>
+                </div>    
+            </div>
+
+            <div class="ship" id="borg4">
+                <img class="animate__animated animate__fadeInRight" id="img-4" src="./images/enemy_ship.png" alt="enemy ship">
+                <div class="animate__animated animate__fadeIn" class="enemy-data" id="id-4">
+                    <h1>Borg</h1>
+                    <h3 class="hull">?</h3>
+                    <h3 class="firepower">?</h3>
+                    <h3 class="accuracy">?</h3>
+                </div>                
+            </div>
+
+            <div class="ship" id="borg5">
+                <img class="animate__animated animate__fadeInRight" id="img-5" src="./images/enemy_ship.png" alt="enemy ship">
+                <div class="animate__animated animate__fadeIn" class="enemy-data" id="id-5">
+                    <h1>Borg</h1>
+                    <h3 class="hull">?</h3>
+                    <h3 class="firepower">?</h3>
+                    <h3 class="accuracy">?</h3>
+                </div>                
+            </div>
         </div>
     </div>
-    <!-- prolly going to need to use css for splitting the our ship and the 
-    enemy ships flexbox? grid??? each ship is a flexbox element????  -->
-    <div id="enemy">
-        <div id="borg0">
-            <img src="./images/enemy_ship.png" alt="enemy ship">
-            <div class="enemy-data" id="id-0">
-                <h1>Borg</h1>
-                <h3 class="hull">?</h3>
-                <h3 class="firepower">?</h3>
-                <h3 class="accuracy">?</h3>
-            </div>
-            
-            
-        </div>
-        <div id="borg1">
-            <img src="./images/enemy_ship.png" alt="enemy ship">
-            <div class="enemy-data" id="id-1">
-                <h1>Borg</h1>
-                <h3 class="hull">?</h3>
-                <h3 class="firepower">?</h3>
-                <h3 class="accuracy">?</h3>
-            </div>
-            
-            
-        </div>
-        <div id="borg2">
-            <img src="./images/enemy_ship.png" alt="enemy ship">
-            <div class="enemy-data" id="id-2">
-                <h1>Borg</h1>
-                <h3 class="hull">?</h3>
-                <h3 class="firepower">?</h3>
-                <h3 class="accuracy">?</h3>
-            </div>
-            
-            
-        </div>
-        <div id="borg3">
-            <img src="./images/enemy_ship.png" alt="enemy ship">
-            <div class="enemy-data" id="id-3">
-                <h1>Borg</h1>
-                <h3 class="hull">?</h3>
-                <h3 class="firepower">?</h3>
-                <h3 class="accuracy">?</h3>
-            </div>
-            
-            
-        </div>
-        <div id="borg4">
-            <img src="./images/enemy_ship.png" alt="enemy ship">
-            <div class="enemy-data" id="id-4">
-                <h1>Borg</h1>
-                <h3 class="hull">?</h3>
-                <h3 class="firepower">?</h3>
-                <h3 class="accuracy">?</h3>
-            </div>
-            
-            
-        </div>
-        <div id="borg5">
-            <img src="./images/enemy_ship.png" alt="enemy ship">
-            <div class="enemy-data" id="id-5">
-                <h1>Borg</h1>
-                <h3 class="hull">?</h3>
-                <h3 class="firepower">?</h3>
-                <h3 class="accuracy">?</h3>
-            </div>
-            
-            
-        </div>
-    </div>
-    
 </body>
 </html>

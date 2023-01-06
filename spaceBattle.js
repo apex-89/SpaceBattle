@@ -1,17 +1,8 @@
 let myShip = document.getElementById('my-ship');
-let enemy1 = document.getElementById('borg0');
-
-
 let shipHullElement = document.getElementById('my-ship-hull');
-// let borgHullElement = document.getElementById('hull');
-// let borgFirepowerElement = document.getElementById('firepower');
-// let borgAccuracyElement = document.getElementById('accuracy');
+let button = document.querySelector('button')
 
-
-// let currentHull = +shipHullElement.innerText;// dont need?
-// let currentEnemyHUll =  +borgHullElement.innerText;// dont need?
-
-myShip.addEventListener('click', () => {    
+button.addEventListener('click', () => {    
     spaceBattle()
 })
 
@@ -21,20 +12,19 @@ class Ship {
         this.firepower = firepower;// amount of damage done to the hull of the target with successful hit
         this.accuracy = accuracy;// chance between 0 and 1 that the ship will hit its target
     }
-    attack(alien){ // can I update the html of enemy hull here?
+    attack(alien){
         if(Math.random() < alien.accuracy){
             alien.hull = alien.hull - this.firepower;
-            // borgHullElement.innerText = alien.hull
-            // console.log(borgHullElement.innerText)
+            myShip.style.animation = "shake 0.5s"
             console.log("ON TARGET!");
         }else{
             console.log("miss")
         }
     }
-    defend(self){// can I update html of my ship hull here
+    defend(self){
         if(Math.random() < self.accuracy){
             self.hull = self.hull - this.firepower;
-            shipHullElement.innerText = ussHelloWorld.hull;
+            shipHullElement.innerText = `HULL: ${ussHelloWorld.hull}`;
             console.log("WE'VE BEEN HIT!!", this.firepower, ussHelloWorld.hull)
         }else{
             console.log("deflected")
@@ -44,12 +34,6 @@ class Ship {
         // self.hull - alien.firepower
     }
 };
-
-
-// EXAMPLE USE OF accuracy TO DETERMINE A HIT:
-// if(Math.random() < alien[0].accuracy){
-//     console.log("You have been hit")
-// }
 
 // hull- between 3 and 6
 // firepower between 2 and 4
@@ -70,7 +54,6 @@ let ussHelloWorld = new Ship(20, 5, .7);
 
 let borg = new AlienShip();
 
-
 borg.addToFleet();
 borg.addToFleet();
 borg.addToFleet();
@@ -78,56 +61,65 @@ borg.addToFleet();
 borg.addToFleet();
 borg.addToFleet();
 
+// loop through fleet
+// add borg properties to html
 for (let i=0; i<6; i++){
     let borgHullElement = document.querySelector(`#id-${i} .hull`)
     let borgFireowerElement = document.querySelector(`#id-${i} .firepower`)
     let borgAccuracyElement = document.querySelector(`#id-${i} .accuracy`)
-    borgHullElement.innerText = borg.fleet[i].hull
-    borgFireowerElement.innerText = borg.fleet[i].firepower
-    borgAccuracyElement.innerText = borg.fleet[i].accuracy
+    borgHullElement.innerText = `HULL: ${borg.fleet[i].hull}`
+    borgFireowerElement.innerText = `FIREPOWER: ${borg.fleet[i].firepower}`
+    borgAccuracyElement.innerText = `ACCURACY: ${borg.fleet[i].accuracy}`
     console.log(borgHullElement, borgFireowerElement, borgAccuracyElement)
-}
+};
+ // end of game prompt 
+const actionEx = () => {
+    const actionPlan = prompt("Would you like to start and try again?", "YES")
+    if(actionPlan.toLowerCase() === "yes"){
+        document.location.reload()
+    }else{
+        shipHullElement.innerText = "GAMEOVER"
+    }
+};
 
 const spaceBattle = () => {
+    // start loop through fleet
+    // hull check for our ship
     let fleet = borg.fleet;
     for(let i=0; i<fleet.length; i++){
-        // borgHullElement.innerText = fleet[i].hull
         if(ussHelloWorld.hull <= 0){
             break;
         }
         console.log(fleet[i])
-        while(true) {            
+        // call attack method
+        // update fleet hull and img if destroyed 
+        while(true) {       
             ussHelloWorld.attack(fleet[i])            
             if (fleet[i].hull <= 0){
-                document.querySelector(`#id-${i} .hull`).innerText = fleet[i].hull
-                console.log("ship destroyed") 
+                document.querySelector(`#id-${i} .hull`).innerText = `HULL: ${fleet[i].hull}`;
+                document.querySelector(`#img-${i}`).src = `./images/enemy_ship_dead.png`;
+                document.querySelector(`#img-${i}`).style.animation = "shake 0.5s";
+                console.log("ship destroyed"); 
                     break;
-            }            
-            fleet[i].defend(ussHelloWorld)            
+            }
+            // call defend method
+            // check if our ship is destroyed             
+            fleet[i].defend(ussHelloWorld);            
             if (ussHelloWorld.hull <= 0){
-                console.log("ALL. YOUR. BASE. ARE BELONG. TO US.")
+                myShip.style.animation = "shake 0.5s";
+                console.log("ALL. YOUR. BASE. ARE BELONG. TO US.");
                 break;
             }
         }        
     }
-    // let actionPlan = window.prompt("Would you like to start and try again?", "YES")
-    // if(actionPlan.toLowerCase() === "yes"){
-    //     document.location.reload()
-    // }else{
-    //     shipHullElement.innerText = "GAMEOVER"
-    // }
+    // after game end you can stop or reload the game
+    if(ussHelloWorld.hull <= 0 || fleet[fleet.length - 1].hull <= 0){
+        setTimeout(actionEx, 250)
+    }
+    
     // loop
     // check if hull = 0 
     // attack
     // once borg ship destroyed ask to continue or retreat
 };
 
-
-
-
-
-
-
-// for (i=0; i<20; i++){
-//     console.log(Number(((Math.random()*(.9 - .6)) + .55).toFixed(1)))
-// }
